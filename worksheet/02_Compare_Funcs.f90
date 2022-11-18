@@ -9,10 +9,10 @@ program compare
         tau = 0.124523 + 0.739594*(-0.25+x)+0.65781*(-0.25+x)**2&
         -0.916955*(-0.25+x)**3-0.214698*(-0.25+x)**4-2.35154*(-0.25+x)**5
 
-        OPEN(1,file='02_phi.txt')
-        OPEN(2,file='02_tau.txt')
-        WRITE(1,*) phi
-        WRITE(2,*) tau
+        open(1,file='02_phi.txt')
+        open(2,file='02_tau.txt')
+        write(1,*) phi
+        write(2,*) tau
 
     end do
 end program compare

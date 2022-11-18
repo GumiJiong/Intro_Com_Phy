@@ -1,4 +1,4 @@
-program mathexp
+program MathExp
 
     implicit none
     
@@ -11,4 +11,4 @@ program mathexp
 
     write(*,*) chi
 
-end program mathexp
+end program MathExp
