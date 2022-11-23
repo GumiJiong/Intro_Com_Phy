@@ -1,7 +1,7 @@
 program projectile
     implicit none
     real (kind=16) :: Cd, b, A, Cdfun, Afun, bfun, Re, r
-    real (kind=16) :: z_1, z_2, v_1, v_2, dt, time, m, g, z_15
+    real (kind=16) :: z_1, z_2, v_1, v_2, dt, time, m, g, v_15
 
     Re = 15000.0
     r = 5e-3
@@ -11,7 +11,7 @@ program projectile
     read(*,*) dt
 
     z_1 = 0.0; v_1 = 5.0; time = 0.0;
-    open(1,file="13_Euler_01.txt")
+    open(1,file="13_Euler_0001.txt")
     write(1,*) time, z_1, v_1
 
     do while (z_2 >= 0.0)
@@ -22,14 +22,14 @@ program projectile
         write(1,*) time, z_2, v_2
     end do
 
-    z_1 = 0.0; v_1 = 5.0; time = 0.0;
-    open(1,file="13_mp_01.txt")
+    z_1 = 0.0; v_1 = 5.0; time = 0.0; z_2=0;
+    open(1,file="13_mp_0001.txt")
     write(1,*) time, z_1, v_1
 
     do while (z_2 >= 0.0)
-        z_15 = z_1 + v_1*dt*0.5
-        z_2 = z_1 + v_1*dt
-        v_2 = v_1 - dt*(m*g+b*v_1*abs(v_1))/m
+        v_15 = v_1 - dt*0.5*(m*g+b*v_1*abs(v_1))/m
+        z_2 = z_1 + v_15*dt
+        v_2 = v_1 - dt*(m*g+b*v_15*abs(v_15))/m
         time = time + dt
         z_1 = z_2; v_1 = v_2
         write(1,*) time, z_2, v_2
